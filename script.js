@@ -2,21 +2,8 @@
 // console.log("The JavaScript file is working!");
 
 // Generates a random whole number between 1 and 3
-function getComputerChoice() {
-  let x = Math.floor(Math.random() * 3 + 1);
-  console.log(x);
 
-  if (x == 1) {
-    return "Rock";
-  } else if (x == 2) {
-    return "Paper";
-  } else {
-    return "Scissors";
-  }
-}
-
-const computerChoice = getComputerChoice();
-console.log(computerChoice);
+//console.log(computerChoice);
 
 //console.log(playerChoice);
 
@@ -24,8 +11,26 @@ let playerScore = 0;
 let computerScore = 0;
 
 function game() {
+  // random choice for the computer's choice
+  function getComputerChoice() {
+    let x = Math.floor(Math.random() * 3 + 1);
+    console.log(x);
+
+    if (x == 1) {
+      return "Rock";
+    } else if (x == 2) {
+      return "Paper";
+    } else {
+      return "Scissors";
+    }
+  }
+
+  const computerChoice = getComputerChoice();
+  console.log(computerChoice);
+
   // prompt for the player's choice
   const playerChoice = prompt("Enter a choice: ").toLowerCase();
+  console.log(playerChoice);
 
   // Function for playing one round of the game
   function playRound(playerChoice, computerChoice) {
@@ -66,13 +71,13 @@ function game() {
   console.log(playRound(playerChoice, computerChoice));
 }
 
-// calling the game() function 5 times
+// calling the game() function until one player reaches a score of 5
+
 let i = 1;
 for (i = 1; i <= 5; i++) {
   game();
 }
 
-//game();
 if (playerScore > computerScore) {
   console.log(
     `You won! Your score was ${playerScore}, and the computer's score was ${computerScore}.`

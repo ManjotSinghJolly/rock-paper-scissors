@@ -71,13 +71,6 @@ function game() {
   console.log(playRound(playerChoice, computerChoice));
 }
 
-// calling the game() function until one player reaches a score of 5
-
-let i = 1;
-for (i = 1; i <= 5; i++) {
-  game();
-}
-
 if (playerScore > computerScore) {
   console.log(
     `You won! Your score was ${playerScore}, and the computer's score was ${computerScore}.`

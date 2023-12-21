@@ -10,6 +10,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let playerChoice;
+let isGameOver = false;
 
 // prompt for the player's choice
 // const playerChoice = prompt("Enter a choice: ").toLowerCase();
@@ -75,20 +76,6 @@ function playRound(playerChoice) {
 //   game();
 // }
 
-if (playerScore > computerScore) {
-  console.log(
-    `You won! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
-  );
-} else if (playerScore < computerScore) {
-  console.log(
-    `You lost! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
-  );
-} else {
-  console.log(
-    `It's a tie! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
-  );
-}
-
 // Selecting all the button elements on the page
 const btn = document.querySelectorAll("button");
 
@@ -107,6 +94,33 @@ btn.forEach(function (button) {
     ) {
       playerChoice = buttonValue;
       console.log(playRound(playerChoice));
+      console.log("Player Score: " + playerScore);
+      console.log("Computer Score: " + computerScore);
+    }
+
+    // Checking if the game should continue or not
+    if (playerScore === 5 || computerScore === 5) {
+      // Showing an alert that the game is over and a reset is required
+      alert("Game over! Reset to play again.");
+
+      // Disabling the buttons once one of the player has the score of 5.
+      btn.forEach(function (button) {
+        button.disabled = true;
+      });
     }
   });
 });
+
+// if (playerScore > computerScore) {
+//   console.log(
+//     `You won! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
+//   );
+// } else if (playerScore < computerScore) {
+//   console.log(
+//     `You lost! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
+//   );
+// } else {
+//   console.log(
+//     `It's a tie! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
+//   );
+// }

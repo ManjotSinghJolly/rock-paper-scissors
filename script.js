@@ -9,8 +9,14 @@
 
 let playerScore = 0;
 let computerScore = 0;
+let playerChoice;
 
-function game() {
+// prompt for the player's choice
+// const playerChoice = prompt("Enter a choice: ").toLowerCase();
+// console.log(playerChoice);
+
+// Function for playing one round of the game
+function playRound(playerChoice) {
   // random choice for the computer's choice
   function getComputerChoice() {
     let x = Math.floor(Math.random() * 3 + 1);
@@ -28,48 +34,46 @@ function game() {
   const computerChoice = getComputerChoice();
   console.log(computerChoice);
 
-  // prompt for the player's choice
-  const playerChoice = prompt("Enter a choice: ").toLowerCase();
-  console.log(playerChoice);
-
-  // Function for playing one round of the game
-  function playRound(playerChoice, computerChoice) {
-    // THE COMPUTER CHOOSES ROCK
-    if (playerChoice === "rock" && computerChoice === "Rock") {
-      return "It's a tie.";
-    } else if (playerChoice === "scissors" && computerChoice === "Rock") {
-      computerScore++;
-      return "You lose! The computer chose rock.";
-    } else if (playerChoice === "paper" && computerChoice === "Rock") {
-      playerScore++;
-      return "You win! The computer chose rock.";
-    }
-    // THE COMPUTER CHOOSES PAPER
-    else if (playerChoice === "rock" && computerChoice === "Paper") {
-      computerScore++;
-      return "You lose! The computer chose paper.";
-    } else if (playerChoice === "paper" && computerChoice === "Paper") {
-      return "It's a tie.";
-    } else if (playerChoice === "scissors" && computerChoice === "Paper") {
-      playerScore++;
-      return "You win! The computer chose paper.";
-    }
-    // THE COMPUTER CHOSE SCISSORS
-    else if (playerChoice === "rock" && computerChoice === "Scissors") {
-      playerScore++;
-      return "You win! The computer chose scissors.";
-    } else if (playerChoice === "paper" && computerChoice === "Scissors") {
-      computerScore++;
-      return "You lose! The computer chose scissors.";
-    } else if (playerChoice === "scissors" && computerChoice === "Scissors") {
-      return "It's a tie.";
-    } else {
-      return "Please enter a valid choice.";
-    }
+  // THE COMPUTER CHOOSES ROCK
+  if (playerChoice === "rock" && computerChoice === "Rock") {
+    return "It's a tie.";
+  } else if (playerChoice === "scissors" && computerChoice === "Rock") {
+    computerScore++;
+    return "You lose! The computer chose rock.";
+  } else if (playerChoice === "paper" && computerChoice === "Rock") {
+    playerScore++;
+    return "You win! The computer chose rock.";
   }
-
-  console.log(playRound(playerChoice, computerChoice));
+  // THE COMPUTER CHOOSES PAPER
+  else if (playerChoice === "rock" && computerChoice === "Paper") {
+    computerScore++;
+    return "You lose! The computer chose paper.";
+  } else if (playerChoice === "paper" && computerChoice === "Paper") {
+    return "It's a tie.";
+  } else if (playerChoice === "scissors" && computerChoice === "Paper") {
+    playerScore++;
+    return "You win! The computer chose paper.";
+  }
+  // THE COMPUTER CHOSE SCISSORS
+  else if (playerChoice === "rock" && computerChoice === "Scissors") {
+    playerScore++;
+    return "You win! The computer chose scissors.";
+  } else if (playerChoice === "paper" && computerChoice === "Scissors") {
+    computerScore++;
+    return "You lose! The computer chose scissors.";
+  } else if (playerChoice === "scissors" && computerChoice === "Scissors") {
+    return "It's a tie.";
+  } else {
+    return "Please enter a valid choice.";
+  }
 }
+
+// console.log(playRound(playerChoice, computerChoice));
+
+// let i = 1;
+// for (i = 1; i <= 5; i++) {
+//   game();
+// }
 
 if (playerScore > computerScore) {
   console.log(
@@ -84,3 +88,25 @@ if (playerScore > computerScore) {
     `It's a tie! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
   );
 }
+
+// Selecting all the button elements on the page
+const btn = document.querySelectorAll("button");
+
+// Adding an event listener to each button
+btn.forEach(function (button) {
+  button.addEventListener("click", function (event) {
+    // Accessing the data-value of the button pressed
+    var buttonValue = event.target.dataset.value;
+
+    //Using the buttonValue variable in the alert prompt
+    // alert("Button Clicked! Value: " + buttonValue);
+    if (
+      buttonValue === "rock" ||
+      buttonValue === "paper" ||
+      buttonValue === "scissors"
+    ) {
+      playerChoice = buttonValue;
+      console.log(playRound(playerChoice));
+    }
+  });
+});

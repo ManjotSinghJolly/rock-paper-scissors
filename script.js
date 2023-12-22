@@ -9,7 +9,7 @@
 
 let playerScore = 0;
 let computerScore = 0;
-let playerChoice;
+//let playerChoice;
 let isGameOver = false;
 
 // prompt for the player's choice
@@ -17,11 +17,16 @@ let isGameOver = false;
 // console.log(playerChoice);
 
 // Function for playing one round of the game
+const result = document.getElementById("result");
+const playerResult = document.getElementById("player");
+const computerResult = document.getElementById("computer");
+//const para = document.createElement("p");
+
 function playRound(playerChoice) {
   // random choice for the computer's choice
   function getComputerChoice() {
     let x = Math.floor(Math.random() * 3 + 1);
-    console.log(x);
+    //console.log(x);
 
     if (x == 1) {
       return "Rock";
@@ -33,39 +38,70 @@ function playRound(playerChoice) {
   }
 
   const computerChoice = getComputerChoice();
-  console.log(computerChoice);
+  //console.log(computerChoice);
 
   // THE COMPUTER CHOOSES ROCK
   if (playerChoice === "rock" && computerChoice === "Rock") {
-    return "It's a tie.";
+    result.textContent = "It's a tie.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   } else if (playerChoice === "scissors" && computerChoice === "Rock") {
     computerScore++;
-    return "You lose! The computer chose rock.";
+    result.textContent = "You lose! The computer chose rock.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   } else if (playerChoice === "paper" && computerChoice === "Rock") {
     playerScore++;
-    return "You win! The computer chose rock.";
+    result.textContent = "You win! The computer chose rock.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   }
   // THE COMPUTER CHOOSES PAPER
   else if (playerChoice === "rock" && computerChoice === "Paper") {
     computerScore++;
-    return "You lose! The computer chose paper.";
+    result.textContent = "You lose! The computer chose paper.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   } else if (playerChoice === "paper" && computerChoice === "Paper") {
-    return "It's a tie.";
+    result.textContent = "It's a tie.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   } else if (playerChoice === "scissors" && computerChoice === "Paper") {
     playerScore++;
-    return "You win! The computer chose paper.";
+    result.textContent = "You win! The computer chose paper.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   }
   // THE COMPUTER CHOSE SCISSORS
   else if (playerChoice === "rock" && computerChoice === "Scissors") {
     playerScore++;
-    return "You win! The computer chose scissors.";
+    result.textContent = "You win! The computer chose scissors.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   } else if (playerChoice === "paper" && computerChoice === "Scissors") {
     computerScore++;
-    return "You lose! The computer chose scissors.";
+    result.textContent = "You lose! The computer chose scissors.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   } else if (playerChoice === "scissors" && computerChoice === "Scissors") {
-    return "It's a tie.";
+    result.textContent = "It's a tie.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
   } else {
-    return "Please enter a valid choice.";
+    result.textContent = "Please enter a valid choice.";
+    playerResult.textContent = "Player Score: " + playerScore;
+    computerResult.textContent = "Computer Score: " + computerScore;
+  }
+
+  // Checking if the game should continue or not
+  if (playerScore === 5 || computerScore === 5) {
+    // Showing an alert that the game is over and a reset is required
+    //alert("Game over! Reset to play again.");
+
+    // Disabling the buttons once one of the player has the score of 5.
+    btn.forEach(function (button) {
+      button.disabled = true;
+    });
   }
 }
 
@@ -84,30 +120,22 @@ btn.forEach(function (button) {
   button.addEventListener("click", function (event) {
     // Accessing the data-value of the button pressed
     var buttonValue = event.target.dataset.value;
+    playRound(buttonValue);
+    // console.log("Player Score: " + playerScore);
+    // console.log("Computer Score: " + computerScore);
 
     //Using the buttonValue variable in the alert prompt
     // alert("Button Clicked! Value: " + buttonValue);
-    if (
-      buttonValue === "rock" ||
-      buttonValue === "paper" ||
-      buttonValue === "scissors"
-    ) {
-      playerChoice = buttonValue;
-      console.log(playRound(playerChoice));
-      console.log("Player Score: " + playerScore);
-      console.log("Computer Score: " + computerScore);
-    }
-
-    // Checking if the game should continue or not
-    if (playerScore === 5 || computerScore === 5) {
-      // Showing an alert that the game is over and a reset is required
-      alert("Game over! Reset to play again.");
-
-      // Disabling the buttons once one of the player has the score of 5.
-      btn.forEach(function (button) {
-        button.disabled = true;
-      });
-    }
+    // if (
+    //   buttonValue === "rock" ||
+    //   buttonValue === "paper" ||
+    //   buttonValue === "scissors"
+    // ) {
+    //   playerChoice = buttonValue;
+    //   console.log(playRound(playerChoice));
+    //   console.log("Player Score: " + playerScore);
+    //   console.log("Computer Score: " + computerScore);
+    // }
   });
 });
 

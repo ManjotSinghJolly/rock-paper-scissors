@@ -99,8 +99,8 @@ function playRound(playerChoice) {
     //alert("Game over! Reset to play again.");
 
     // Disabling the buttons once one of the player has the score of 5.
-    btn.forEach(function (button) {
-      button.disabled = true;
+    btn.forEach(function (input) {
+      input.disabled = true;
     });
   }
 }
@@ -113,13 +113,14 @@ function playRound(playerChoice) {
 // }
 
 // Selecting all the button elements on the page
-const btn = document.querySelectorAll("button");
+const btns = document.querySelectorAll(".input");
 
 // Adding an event listener to each button
-btn.forEach(function (button) {
-  button.addEventListener("click", function (event) {
+btns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    //console.log("Button was clicked!");
     // Accessing the data-value of the button pressed
-    var buttonValue = event.target.dataset.value;
+    var buttonValue = btn.getAttribute("data-value");
     playRound(buttonValue);
     // console.log("Player Score: " + playerScore);
     // console.log("Computer Score: " + computerScore);
@@ -151,4 +152,9 @@ btn.forEach(function (button) {
 //   console.log(
 //     `It's a tie! Your score was ${playerScore}, and the computer's score was ${computerScore}.`
 //   );
+// }
+
+// function myFunction() {
+//   var buttonValue = ;
+//   playRound(buttonValue);
 // }

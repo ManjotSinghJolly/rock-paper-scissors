@@ -6,11 +6,36 @@
   </head>
   <body>
     <h1>Rock Paper Scissors Game</h1>
-    <button data-value="rock">Rock</button>
-    <button data-value="paper">Paper</button>
-    <button data-value="scissors">Scissors</button>
+    <div class="input" data-value="rock">
+      <img src="rock.png" width="140px" height="140px" />
+    </div>
+    <div class="input" data-value="paper">
+      <img
+        src="paper.png"
+        width="150px"
+        height="150px"
+        onlick="playRound(paper)"
+      />
+    </div>
+    <div class="input" data-value="scissors">
+      <img
+        src="scissors.png"
+        width="150px"
+        height="100px"
+        onlick="playRound(scissors)"
+      />
+    </div>
     <div id="result"></div>
     <div id="player"></div>
     <div id="computer"></div>
+    <!--
+    <div style="background-color: yellow" width="100px">
+      <img
+        src="rock.png"
+        width="100px"
+        height="100px"
+        alt="Hand gesture of rock"
+      />
+    </div> -->
   </body>
 </html>

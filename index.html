@@ -7,37 +7,39 @@
   </head>
   <body>
     <h1>Rock Paper Scissors Game</h1>
+    <div id="result">Pick a choice!</div>
+    <div id="choices">First player to score 5 points wins!</div>
+    <div class="boxes">
+      <div id="small-box-1">
+        <img src="question.png" width="60px" height="80px" />
+      </div>
+      <div id="small-box-2">
+        <img src="question.png" width="60px" height="80px" />
+      </div>
+    </div>
+    <div id="scores">
+      <div class="player-icon">
+        <img src="human.png" width="50px" height="50px" />
+        <div id="player"></div>
+      </div>
 
-    <div class="input" data-value="rock">
-      <img src="rock.png" width="90px" height="90px" />
+      <div class="computer-icon">
+        <img src="computer.png" width="50px" height="50px" />
+        <div id="computer"></div>
+      </div>
     </div>
-    <div class="input" data-value="paper">
-      <img
-        src="paper.png"
-        width="105px"
-        height="105px"
-        onlick="playRound(paper)"
-      />
+
+    <div class="button-container">
+      <div class="input" data-value="rock">
+        <img src="rock.png" width="90px" height="90px" />
+      </div>
+      <div class="input" data-value="paper">
+        <img src="paper.png" width="105px" height="105px" />
+      </div>
+      <div class="input" data-value="scissors">
+        <img src="scissors.png" width="110px" height="70px" />
+      </div>
     </div>
-    <div class="input" data-value="scissors">
-      <img
-        src="scissors.png"
-        width="110px"
-        height="70px"
-        onlick="playRound(scissors)"
-      />
-    </div>
-    <div id="result"></div>
-    <div id="player"></div>
-    <div id="computer"></div>
-    <!--
-    <div style="background-color: yellow" width="100px">
-      <img
-        src="rock.png"
-        width="100px"
-        height="100px"
-        alt="Hand gesture of rock"
-      />
-    </div> -->
+    <footer>Copyright &#169; 2023 Manjot Singh Jolly</footer>
   </body>
 </html>
